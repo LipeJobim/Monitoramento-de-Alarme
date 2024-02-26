@@ -1,0 +1,25 @@
+#clientes_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#clientes_table tr.selected {
+    background-color: #a6c9e2;
+    font-weight: bold;
+}
+
+#clientes_table th,
+#clientes_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#clientes_table th {
+    background-color: #f2f2f2;
+}
+
+#clientes_table tr.selected {
+    background-color: #a6c9e2;
+}

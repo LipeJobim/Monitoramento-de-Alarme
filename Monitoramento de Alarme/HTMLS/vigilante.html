@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Vigilantes</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Painel Vigilante</h1>
+
+    <p id="resultado_label"></p>
+
+    <button class="btn btn-primary" onclick="listarVigilantes()">Listar Vigilantes</button>
+    <button class="btn btn-success" onclick="atualizarVigilante()">Atualizar vigilante</button>
+    <button class="btn btn-danger" onclick="deletarVigilante()">Deletar</button>
+    <button class="btn btn-secondary" onclick="criarVigilante()">Criar vigilante</button>
+
+    <table id="vigilantes_table" class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th class="vigilante-id" style="display: none;">ID</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div class="modal fade" id="editarVigilanteModal" tabindex="-1" aria-labelledby="editarVigilanteModalLabel" aria-hidden="true">
+        <!-- Restante do seu modal... -->
+    </div>
+
+    <div class="modal fade" id="criarVigilanteModal" tabindex="-1" aria-labelledby="criarVigilanteModalLabel"
+        aria-hidden="true">
+        <!-- Restante do seu modal... -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Popper.js, necessário para o Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/vigilante.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow-y: hidden;
+    background-image: url(img/BACKGROUND-LOGIN.jpg);
+    background-size: 100% 950px;
+    background-repeat: no-repeat;
+
+
+}
+
+.logo {
+    position: relative;
+    width: 160px;
+    height: 160px;
+
+
+}
+
+form {
+
+    padding-top: 15px;
+    text-align: center;
+    display: flexbox;
+
+
+}
+
+.login {
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    display: block;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255)
+}
+
+input {
+    background-color: rgb(255, 255, 255);
+    width: 270px;
+    padding: 14px;
+    margin: 5px;
+    border: 2px solid rgb(24, 72, 121);
+    border-radius: 15px;
+    background-color: rgb(233, 233, 233);
+    font-size: 17px;
+
+}
+
+
+.enviar {
+    padding-bottom: 15px;
+    width: 170px;
+    background-color: rgb(24, 72, 121);
+    color: white;
+
+}
+
+.enviar:hover {
+    background-color: rgb(4, 27, 51);
+    transition: background-color 0.5s;
+
+
+}

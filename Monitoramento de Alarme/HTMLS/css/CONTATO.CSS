@@ -1,0 +1,125 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body {
+    
+    background-color: rgb(235, 233, 233);
+    overflow-x: hidden;
+    background-image:url(img/4873152.jpg);
+    background-size: 100% 950px;
+    background-repeat: no-repeat;
+    }
+
+
+
+h1 {
+    color: rgb(0, 0, 0);
+    font-family: 'Poppins', sans-serif;
+
+}
+h4 {
+
+    font-size: 16px;
+        font-family: 'Montserrat', sans-serif;
+        font-family: 'Poppins', sans-serif;
+    }
+    header {
+        height: 70px;
+        width: 2000px;
+        display: inline-flex;
+        border: 1px solid rgb(255, 255, 255);
+        padding: 10px;
+        margin: -9px;
+        align-items: center;
+        background-color: rgb(255, 255, 255)
+    }
+    
+    .LOGO {
+    
+        width: 100px;
+        height: 100px;
+    
+    }
+    
+    .LOGO-LETRA {
+    
+        text-decoration: none;
+    }
+    
+    
+    nav {
+        right: 200px;
+        position: absolute;
+    
+    }
+    
+    
+    ul.menu {
+    
+        display: inline-flex;
+        padding: 15px;
+        list-style: none;
+    }
+    
+    
+    ul.menu li a {
+        text-decoration: none;
+        color: #000000;
+    
+    }
+    
+    li {
+        display: inline-flex;
+        padding: 15px;
+        text-decoration: none;
+    
+    }
+    
+    .BT-MENU {
+    
+        padding: 10px;
+        
+    }
+    
+    
+    .BT-MENU:hover {
+    
+        background-color: rgb(4, 27, 51);
+        transition: background-color 0.5s;
+        color: white;
+        border-radius: 10px;
+}
+
+.container {
+    top: 40px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.contact-form input[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}

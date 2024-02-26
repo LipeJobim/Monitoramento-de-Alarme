@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Alarme</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5">Informe os Parâmetros</h1>
+        <form action="#" method="post" id="myForm">
+            <div class="mb-3">
+                <label for="idAlarme" class="form-label">Id do Alarme:</label>
+                <input type="text" class="form-control" name="idAlarme" id="idAlarme" required>
+            </div>
+            <div class="mb-3">
+                <label for="locala" class="form-label">Localização:</label>
+                <input type="text" class="form-control" name="locala" id="locala" required>
+            </div>
+            <div class="mb-3">
+                <label for="diadoalarme " class="form-label">Data:</label>
+                <input type="date" class="form-control" name="diadoalarme" id="diadoalarme" required>
+            </div>
+            <div class="mb-3">
+                <label for="Ativo" class="form-label">Ativo:</label>
+                <select class="form-select" name="Ativo" id="Ativo" required>
+                    <option value=""></option>
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="salvarNovoAlarme()">Salvar na Tabela Alarme</button>
+
+            <!-- Botões adicionais -->
+            <button type="button" class="btn btn-info" onclick="listarAlarmes()">Listar Alarmes</button>
+            <button type="button" class="btn btn-warning" onclick="atualizarAlarme()">Atualizar Alarme</button>
+            <button type="button" class="btn btn-danger" onclick="deletarAlarme()">Deletar Alarme</button>
+        </form>
+        <div id="tabelaAlarmes"></div>
+    </div>
+
+    <!-- Inclua os scripts do Bootstrap e do jQuery (caso necessário) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        function salvarNovoAlarme() {
+            const idAlarme = document.getElementById("idAlarme").value;
+            const locala = document.getElementById("locala").value;
+            const diadoalarme = document.getElementById("diadoalarme").value;
+            const ativo = document.getElementById("Ativo").value;
+
+            const dadosAlarme = {
+                idAlarme: idAlarme,
+                locala: locala,
+                diadoalarme: diadoalarme,
+                ativo: ativo
+            };
+
+            fetch('http://localhost:8080/cadastrar/alarme', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dadosAlarme)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erro ao salvar alarme: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    listarAlarmes()
+                    console.log('Alarme salvo com sucesso:', data);
+                    alert('Alarme salvo com sucesso!');
+                    listarAlarmes();
+                    document.getElementById("myForm").reset();
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                });
+        }
+
+        function listarAlarmes() {
+            fetch('http://localhost:8080/alarmes')
+                .then(response => response.json())
+                .then(alarmes => {
+                    const tabelaAlarmes = document.getElementById('tabelaAlarmes');
+
+                    // Criar e preencher a tabela
+                    const table = document.createElement('table');
+                    table.className = 'table table-bordered table-striped';
+                    const thead = document.createElement('thead');
+                    const tbody = document.createElement('tbody');
+
+                    // Cabeçalho da tabela
+                    const headerRow = document.createElement('tr');
+                    ['ID do Alarme', 'Localização', 'Data', 'Ativo'].forEach(headerText => {
+                        const th = document.createElement('th');
+                        th.appendChild(document.createTextNode(headerText));
+                        headerRow.appendChild(th);
+                    });
+                    thead.appendChild(headerRow);
+
+                    // Linhas da tabela
+                    alarmes.forEach(alarme => {
+                        const row = document.createElement('tr');
+                        Object.values(alarme).forEach(value => {
+                            const td = document.createElement('td');
+                            td.appendChild(document.createTextNode(value));
+                            row.appendChild(td);
+                        });
+                        tbody.appendChild(row);
+                    });
+
+                    // Adicionar cabeçalho e linhas à tabela
+                    table.appendChild(thead);
+                    table.appendChild(tbody);
+
+                    // Limpar a tabela anterior, se existir
+                    tabelaAlarmes.innerHTML = '';
+
+                    // Adicionar a nova tabela à div
+                    tabelaAlarmes.appendChild(table);
+                })
+                .catch(error => {
+                    console.error('Erro ao listar alarmes:', error);
+                });
+        }
+
+        function atualizarAlarme() {
+            const idAlarme = document.getElementById("idAlarme").value;
+
+            // Implemente a lógica para obter os dados do alarme pelo ID
+            // e preencher o formulário para edição
+            console.log('Atualizar Alarme:', idAlarme);
+        }
+
+        function deletarAlarme(idAlarme) {
+            fetch(`http://localhost:8080/alarmes/${idAlarme}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erro ao deletar alarme: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Alarme deletado com sucesso:', data);
+                    // Aqui você pode adicionar qualquer ação de acompanhamento, como limpar o formulário
+                    listarAlarmes(); // Atualizar a tabela após a exclusão
+                })
+                .catch(error => {
+                    console.error('Erro ao deletar alarme:', error);
+                });
+        }
+        
+
+    </script>
+</body>
+
+</html>
