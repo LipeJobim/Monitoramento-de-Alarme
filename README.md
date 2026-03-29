@@ -1,7 +1,8 @@
-Projeto de aperfeiçoamento teórico e prático da faculdade em grupo.
+Sistema de monitoramento de alarmes.
+Toda vez que um alarme é disparado, um vigilante é acionado pelo sistema.
 ## 📸 Preview
 
-![Home](monitoram/home.png)
-![Login](img/login.png)
-![Home](img/index.png)
-![Login](img/crud.png)
+![Home](imgs/home.png)
+![Login](imgs/login.png)
+![Home](imgs/index.png)
+![Login](imgs/crud.png)
